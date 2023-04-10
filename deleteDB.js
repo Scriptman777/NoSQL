@@ -1,0 +1,6 @@
+
+
+use('GarbageCollectors');
+
+
+db.dropDatabase();
