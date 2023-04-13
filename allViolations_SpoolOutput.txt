@@ -1,0 +1,342 @@
+GarbageCollectors> load("allViolations.js")
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd6063f9"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'Location Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'required',
+        specifiedAs: { required: [ 'gpsLat', 'gpsLon' ] },
+        missingProperties: [ 'gpsLat', 'gpsLon' ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd6063fa"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'Location Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'gpsLat',
+            description: "'gpsLat' must be a double and is required",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'gpsLon',
+            description: "'gpsLon' must be a double and is required",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'city',
+            description: 'Name of the city must be a string',
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'street',
+            description: 'Street must be a string',
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'streetNumber',
+            description: 'StreetNumber must be a string',
+            details: [ [Object] ]
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd6063fb"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'GarbageCan Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'required',
+        specifiedAs: { required: [ 'garbageType', 'volume', 'location' ] },
+        missingProperties: [ 'garbageType', 'location' ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd6063fc"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'GarbageCan Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'garbageType',
+            description: "'garbageType' must be a string and is required",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'volume',
+            description: "'volume' must be an integer in [ 10, 1000 ] and is required",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'location',
+            description: 'GarbageCan must have a location',
+            details: [ [Object] ]
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd6063fd"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'GarbageCan Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'volume',
+            description: "'volume' must be an integer in [ 10, 1000 ] and is required",
+            details: [ [Object] ]
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd6063fe"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'Landfill Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'required',
+        specifiedAs: { required: [ 'capacity', 'location', 'operational' ] },
+        missingProperties: [ 'capacity', 'location', 'operational' ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd6063ff"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'Landfill Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'location',
+            description: 'Landfill must have a location',
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'capacity',
+            description: "'capacity' must be an larger than 10000l and is required",
+            details: [ [Object], [Object] ]
+          },
+          {
+            propertyName: 'operational',
+            description: "'operational' must be an a boolean and is required",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'collectionsPerfomed',
+            description: "'collectionsPerfomed' must be an array od garbageCollections",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'percentFilled',
+            description: "'percentFilled' cannot be lower than 0",
+            details: [ [Object] ]
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd606400"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'Landfill Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'capacity',
+            description: "'capacity' must be an larger than 10000l and is required",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'percentFilled',
+            description: "'percentFilled' cannot be lower than 0",
+            details: [ [Object] ]
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd606401"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'Vehicle Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'required',
+        specifiedAs: { required: [ 'licencePlate', 'capacity', 'homeLandfill' ] },
+        missingProperties: [ 'capacity', 'homeLandfill', 'licencePlate' ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd606402"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'Vehicle Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'licencePlate',
+            description: "'licencePlate' must be a string and is required",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'capacity',
+            description: "'capacity' must be an integer in [ 1000, 100000 ] and is required",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'homeLandfill',
+            description: 'Vehicle must have a home landfill',
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'model',
+            description: 'model must be a string',
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'make',
+            description: 'make must be a string',
+            details: [ [Object] ]
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd606403"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'Vehicle Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'capacity',
+            description: "'capacity' must be an integer in [ 1000, 100000 ] and is required",
+            details: [ [Object] ]
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd606404"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'GarbageCollection Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'required',
+        specifiedAs: { required: [ 'assignedVehicle', 'dayOfCollection' ] },
+        missingProperties: [ 'assignedVehicle', 'dayOfCollection' ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd606405"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'GarbageCollection Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'assignedVehicle',
+            description: 'Vehicle must be assigned',
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'garbageCans',
+            description: "'garbageCans' must be an array of garbageCans",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'dayOfCollection',
+            description: "'dayOfCollection' must be a string from Monday, Tuesday, Wednesday, Thursday or Friday and is required",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'dateEnd',
+            description: "'dateEnd' must be a Date",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'length',
+            description: "'length' must be a Double",
+            details: [ [Object] ]
+          },
+          {
+            propertyName: 'timeEstimate',
+            description: "'timeEstimate' must be an Int (in minutes)",
+            details: [ [Object] ]
+          }
+        ]
+      }
+    ]
+  }
+}
+{
+  failingDocumentId: ObjectId("6437e3f5dae3143cfd606406"),
+  details: {
+    operatorName: '$jsonSchema',
+    title: 'GarbageCollection Object Validation',
+    schemaRulesNotSatisfied: [
+      {
+        operatorName: 'properties',
+        propertiesNotSatisfied: [
+          {
+            propertyName: 'dayOfCollection',
+            description: "'dayOfCollection' must be a string from Monday, Tuesday, Wednesday, Thursday or Friday and is required",
+            details: [ [Object] ]
+          }
+        ]
+      }
+    ]
+  }
+}
