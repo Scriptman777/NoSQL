@@ -54,7 +54,7 @@ db.garbageCans.insertOne({
 try {
 // Missing requirements
 
-db.garbageCans.insertOne({
+db.garbageCan.insertOne({
     "volume": 120,
 })
 }
@@ -65,7 +65,7 @@ catch(err){
 try {
 // Wrong types
 
-db.garbageCans.insertOne({
+db.garbageCan.insertOne({
     "garbageType": 123,
     "volume": 12.5,
     "location": "Here"
@@ -78,7 +78,7 @@ catch(err){
 try {
 // Value outside allowed range
 
-db.garbageCans.insertOne({
+db.garbageCan.insertOne({
     "garbageType": "Plastic",
     "volume": 100000,
     "location": ObjectId('64340a41b810aa7140dca5e4')

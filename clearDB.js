@@ -3,7 +3,7 @@ use('GarbageCollectors');
 
 db.location.deleteMany({})
 
-db.garbageCans.deleteMany({})
+db.garbageCan.deleteMany({})
 
 db.landfill.deleteMany({})
 

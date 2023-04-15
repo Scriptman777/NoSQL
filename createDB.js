@@ -36,7 +36,7 @@ db.createCollection("location", {
 } )
 
 
-db.createCollection("garbageCans", {
+db.createCollection("garbageCan", {
    validator: {
       $jsonSchema: {
          bsonType: "object",
