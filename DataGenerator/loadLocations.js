@@ -4164,8 +4164,8 @@ streets.forEach(location => {
     "streetNumber":String(getRandomStreetNumber())})
 });
 
-print("Inserted " + locations.length + " locations.")
 const result = db.location.insertMany(locations)
+print("Inserted " + locations.length + " locations.")
 // print(result)
 
 function getRandomLatitude() {
