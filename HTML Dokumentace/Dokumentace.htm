@@ -1,0 +1,296 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{mso-style-link:"Nadpis 1 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	line-height:107%;
+	page-break-after:avoid;
+	background:#00B0F0;
+	font-size:18.0pt;
+	font-family:"Calibri Light",sans-serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:36.0pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:36.0pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.Nadpis1Char
+	{mso-style-name:"Nadpis 1 Char";
+	mso-style-link:"Nadpis 1";
+	font-family:"Calibri Light",sans-serif;
+	background:#00B0F0;
+	font-weight:bold;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=CS style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<h1 style='text-indent:7.1pt'><span style='font-size:26.0pt;line-height:107%;
+color:black'>Garbage Collectors </span><span style='font-size:26.0pt;
+line-height:107%;font-family:"Segoe UI Emoji",sans-serif;color:black'>&#128465;</span></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Systém by měl sloužit firmě, která se zabývá svozem odpadu.
+Měl by napomáhat při organizaci provozu firmy. Systém bude poskytovat přehled o
+aktuálních svozech, svozových nádobách a stavu skládek na jehož základě bude
+možné svozy optimalizovat z hlediska trasy nebo typu potřebného vozu (objem,
+konstrukce apod.). </p>
+
+<h1 style='text-indent:7.1pt'><span style='color:black'>E-R Diagram</span></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img width=604 height=313 id="Obrázek 1"
+src="Dokumentace_soubory/image001.png"></p>
+
+<h1 style='text-indent:7.1pt'><span style='color:black'>Slovní definice
+validací</span></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Location:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>city je nepovinný atribut typu string.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>gpsLat (zeměpisná šířka) je povinný atribut typu double a
+dosahuje hodnot -90 až 90.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>gpsLon (zeměpisná výška) je povinný atribut typu double a
+dosahuje hodnot -180 až 180.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>street je nepovinný atribut typu string.</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>streetNumber je nepovinný atribut typu string.</p>
+
+<p class=MsoNormal>GarbageCan</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>garbageType je povinný atribut a typu GType (enum string hodnot
+dle projektu z PPRO). </p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>location je povinný ObjectID odkazující na kolekci Location.</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>volume je povinný atribut tybu double a může dosahovat hodnot 10
+až 1000.</p>
+
+<p class=MsoNormal>Landfill</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>capacity je povinný atribut typu int a dosahuje hodnot větších
+než 10000l.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>collectionsPerfomed je seznam všech svozů této skládky, odkazy
+pomocí ObjectID</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>location je povinný ObjectID odkazující na kolekci Location.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>percentFilled je volitelný atribut typu integer a dosahuje hodnot
+0 a vyšších.</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>operational je povinný atribut typu boolean.</p>
+
+<p class=MsoNormal>Vehicle</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>capacity je povinný atribut typu double a dosahuje hodnot v&nbsp;rozmezí
+1000 až 10000l.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>homeLandfill je povinný ObjectID odkazující na Landfill.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>licencePlate je povinný atribut typu string.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>make je volitelný atribut typu string.</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>model je volitelný atribut typu string.</p>
+
+<p class=MsoNormal>GarbageCollection</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>assignedVehicle je povinný ObjectID odkazující na Vehicle.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>dateEnd je volitelný atribut typu Date.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>dayOfCollection je povinný atribut typu enum nabývající hodnot:
+Monday, Tuesday, Wednesday, Thursday, Friday.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>garbageCans je seznam popelnic ve svozu </p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>length je délka svozu v&nbsp;kilometrech, datový typ Double</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>timeEstimate je odhad času potřebného na svoz v&nbsp;minutách,
+datový typ Int</p>
+
+<h1 style='text-indent:7.1pt'><span style='color:black'>Popis ukázky API</span></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>1) Přidání nové nádoby</b></p>
+
+<p class=MsoNormal>Očekávané vstupy:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>GPS souřadnice svozové nádoby</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Typ odpadu</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Objem svozové nádoby</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Volitelně adresa stanoviště</p>
+
+<p class=MsoNormal>Je vytvořena nová lokace na základě GPS souřadnic, která je
+následně použita pro vytvoření nové svozové nádoby v&nbsp;databázi. API by
+mohlo výsledný objekt vracet v&nbsp;odpovědi.</p>
+
+<p class=MsoNormal><b>2) Vytvoření svozu pro malou obec</b></p>
+
+<p class=MsoNormal>Očekávané vstupy:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Název obce</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Den svozu</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Poznávací značka vozidla provádějící svoz</p>
+
+<p class=MsoNormal>Na základě jména obce jsou nalezeny všechny svozové nádoby,
+které se v&nbsp;ní nachází. Následně jsou přidány do nového svozu, ke kterému
+je přiřazeno zvolené vozidlo. Tento je zamýšlen pouze jako zjednodušení pro
+malé obce a vsi a nebyl by využíván pro větší města. </p>
+
+</div>
+
+</body>
+
+</html>
