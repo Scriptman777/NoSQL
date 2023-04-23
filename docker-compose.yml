@@ -1,30 +1,82 @@
-version: '2.4'
+version: '3.8'
 
 services:
-  mongo:
+  mongo-primary:
     image: mongo
-    container_name: mongodb
+    container_name: mongo-primary
     restart: always
+    command: "mongod --bind_ip_all --replSet GarbageReplSet"
+    depends_on:
+      - mongo-secondary-a
+      - mongo-secondary-b
     ports:
       - '27017:27017'
     volumes:
-      - mongodb:/data/db
-      - mongodb_config:/data/configdb
+      - mongodb_rs_1_data:/data/db
+      - mongodb_rs_1_config:/data/configdb
+      - ./repl/startRepl.js:/docker-entrypoint-initdb.d/startRepl.js:ro
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: GarbageCollectors
 
-  mongo-express:
+  mongo-secondary-a:
+    image: mongo
+    container_name: mongo-secondary-a
+    restart: always
+    command: "mongod --bind_ip_all --replSet GarbageReplSet"
+    ports:
+      - '27019:27017'
+    volumes:
+      - mongodb_rs_2_data:/data/db
+      - mongodb_rs_2_config:/data/configdb
+
+  mongo-secondary-b:
+    image: mongo
+    container_name: mongo-secondary-b
+    restart: always
+    command: "mongod --bind_ip_all --replSet GarbageReplSet"
+    ports:
+      - '27020:27017'
+    volumes:
+      - mongodb_rs_3_data:/data/db
+      - mongodb_rs_3_config:/data/configdb
+
+  mongo-express-1:
     image: mongo-express
-    container_name: mongo-express
+    container_name: mongo-express-1
+    depends_on:
+      - mongo-primary
     restart: always
     ports:
       - '8081:8081'
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
-      ME_CONFIG_MONGODB_ADMINPASSWORD: password
-      ME_CONFIG_MONGODB_URL: mongodb://admin:password@mongo:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://mongo-primary:27017/?replicaSet=GarbageReplSet
+
+  mongo-express-2:
+    image: mongo-express
+    container_name: mongo-express-2
+    depends_on:
+      - mongo-secondary-a
+    restart: always
+    ports:
+      - '8082:8081'
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo-secondary-a:27017/?readPreference=secondary
+
+  mongo-express-3:
+    image: mongo-express
+    container_name: mongo-express-3
+    depends_on:
+      - mongo-secondary-b
+    restart: always
+    ports:
+      - '8083:8081'
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo-secondary-b:27017/?readPreference=secondary
 
 volumes:
-  mongodb:
-  mongodb_config:
+  mongodb_rs_1_data:
+  mongodb_rs_1_config:
+  mongodb_rs_2_data:
+  mongodb_rs_2_config:
+  mongodb_rs_3_data:
+  mongodb_rs_3_config:
