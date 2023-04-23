@@ -1,3 +1,4 @@
+// -----------------------LOAD LOCATIONS -----------------------
 const jsonStreets = `[
     {
      "city": "Praha",
@@ -4164,9 +4165,8 @@ streets.forEach(location => {
     "streetNumber":String(getRandomStreetNumber())})
 });
 
-const result = db.location.insertMany(locations)
+const locationsId = db.location.insertMany(locations)
 print("Inserted " + locations.length + " locations.")
-// print(result)
 
 function getRandomLatitude() {
     const min = -90;
@@ -4196,3 +4196,100 @@ function getRandomLongtitude() {
 
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+
+// -----------------------LOAD GARBAGECANS -----------------------
+  const garbageCans = []
+  const garbageTypes = ["Směsný", "Plasty", "Papír","Sklo","Kovy","Nebezpečný","Recyklovatelný","Bio"];
+
+const insertedIds = Object.values(locationsId.insertedIds);
+for (let i = 0; i < insertedIds.length; i++) {
+  garbageCans.push({
+          "garbageType": garbageTypes[Math.floor(Math.random() * garbageTypes.length)],
+          "location": insertedIds[i],
+          "volume": Math.floor(Math.random() * (991) + 10)
+        })    
+}
+
+const garbageCansResult = db.garbageCan.insertMany(garbageCans)
+const garbageCansIds = Object.values(garbageCansResult.insertedIds);
+print("Inserted " + garbageCansIds.length + " GarbageCans.")
+
+
+// -----------------------LOAD LANDFILLS -----------------------
+
+const uniqueCities = db.location.distinct("city"); // get unique cities
+const landfills = []
+uniqueCities.forEach(city => {  
+  landfills.push({    
+    "location": db.location.findOne({ city: city })._id,
+    "capacity" : Math.floor(Math.random() * (100000 - 10000)) + 10000,
+    "operational" : Math.random() < 0.5,
+    //"collectionsPerfomed" : null,
+    "percentFilled" : Math.floor(Math.random() * (100))
+  })  
+
+})
+const landfillsResult = db.landfill.insertMany(landfills)
+const landfillsIds = Object.values(landfillsResult.insertedIds);
+print("Inserted " + landfillsIds.length + " Landfills.")
+
+// -----------------------LOAD VEHICLES -----------------------
+
+const vehicles = []
+const makes = ["Ford","Skoda","Volvo","Toyota","Honda","Mazda","BMW","Audi","Renault","Citroen","Fiat"]
+const models = ["Hirtia", "Arpagius", "Cania", "Sartorius", "Attia", "Salvian", "Auria", "Aufidia", "Titia", "Aurus", "Citria"]
+
+for (let i = 0; i < landfillsIds.length; i++) {
+  const carsWanted = Math.floor(Math.random() * 10) + 1
+  for (let j = 0; j < carsWanted; j++) {       
+    vehicles.push({         
+      "licencePlate": generateLicencePlate(),
+      "capacity" : Math.floor(Math.random() * (10000 - 1000)) + 1000,
+      "homeLandfill":landfillsIds[i],
+      "model": models[Math.floor(Math.random() * models.length)],
+      "make": makes[Math.floor(Math.random() * makes.length)],
+    })   
+  }
+}
+
+const vehiclesResult = db.vehicle.insertMany(vehicles)
+const vehiclesIds = Object.values(vehiclesResult.insertedIds);
+print("Inserted " + vehiclesIds.length + " Vehicles.")
+
+function generateLicencePlate() {
+  const allowedCharacters = "0123456789ABCDEFHIJKLMNPRSTUVXYZ";
+  let licencePlate = "";
+  for (let i = 0; i < 7; i++) {
+    licencePlate += allowedCharacters.charAt(Math.floor(Math.random() * allowedCharacters.length));
+  }
+  return licencePlate;
+}
+
+// -----------------------LOAD GARBAGECOLLECTIONS -----------------------
+const garbageCollections = []
+const workDays = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+const garbcanslist = [garbageCansIds[0],garbageCansIds[1],garbageCansIds[2]]
+
+let vehicleIndex = 0
+const meow = new Array(20)
+
+uniqueCities.forEach(city => {    
+  garbageCollections.push({
+    //ZDE NEVÍM JAK ŘEŠIT
+    "garbageCans": garbageCansIds.slice(vehicleIndex*0, vehicleIndex*10),
+    "assignedVehicle": vehiclesIds[vehicleIndex++],    
+    "dayOfCollection": workDays[Math.floor(Math.random() * workDays.length)],
+    "dateEnd": new Date(2023,11,5,5,5),
+    "length": Math.random() * (200),
+    "timeEstimate": Math.floor(Math.random() * (2000 - 60)) + 60
+  })
+})
+
+const garbageCollectionsResult = db.garbageCollection.insertMany(garbageCollections)
+const garbageCollectionsIds = Object.values(garbageCollectionsResult.insertedIds);
+print("Inserted " + garbageCollectionsIds.length + " Collections.")
+
+function getGarbageCans(city){
+  return db.garbageCans.find({ "location.city": city }, { _id: 1 }).limit(1)
+}
