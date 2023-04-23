@@ -4277,7 +4277,7 @@ const meow = new Array(20)
 uniqueCities.forEach(city => {    
   garbageCollections.push({
     //ZDE NEVÍM JAK ŘEŠIT
-    "garbageCans": garbageCansIds.slice(vehicleIndex*0, vehicleIndex*10),
+    "garbageCans": garbageCansIds.slice(vehicleIndex*10, vehicleIndex*10+20),
     "assignedVehicle": vehiclesIds[vehicleIndex++],    
     "dayOfCollection": workDays[Math.floor(Math.random() * workDays.length)],
     "dateEnd": new Date(2023,11,5,5,5),
@@ -4289,7 +4289,3 @@ uniqueCities.forEach(city => {
 const garbageCollectionsResult = db.garbageCollection.insertMany(garbageCollections)
 const garbageCollectionsIds = Object.values(garbageCollectionsResult.insertedIds);
 print("Inserted " + garbageCollectionsIds.length + " Collections.")
-
-function getGarbageCans(city){
-  return db.garbageCans.find({ "location.city": city }, { _id: 1 }).limit(1)
-}
