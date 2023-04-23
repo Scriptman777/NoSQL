@@ -4155,8 +4155,8 @@ const jsonStreets = `[
    ]`;
 
 const streets = JSON.parse(jsonStreets);
-
 const locations = []
+
 streets.forEach(location => {
     locations.push({"city":location.city,
     "gpsLat":getRandomLatitude(),
@@ -4199,10 +4199,10 @@ function getRandomLongtitude() {
 
 
 // -----------------------LOAD GARBAGECANS -----------------------
-  const garbageCans = []
-  const garbageTypes = ["Směsný", "Plasty", "Papír","Sklo","Kovy","Nebezpečný","Recyklovatelný","Bio"];
-
+const garbageCans = []
+const garbageTypes = ["Směsný", "Plasty", "Papír","Sklo","Kovy","Nebezpečný","Recyklovatelný","Bio"];
 const insertedIds = Object.values(locationsId.insertedIds);
+
 for (let i = 0; i < insertedIds.length; i++) {
   garbageCans.push({
           "garbageType": garbageTypes[Math.floor(Math.random() * garbageTypes.length)],
@@ -4217,7 +4217,6 @@ print("Inserted " + garbageCansIds.length + " GarbageCans.")
 
 
 // -----------------------LOAD LANDFILLS -----------------------
-
 const uniqueCities = db.location.distinct("city"); // get unique cities
 const landfills = []
 uniqueCities.forEach(city => {  
@@ -4235,7 +4234,6 @@ const landfillsIds = Object.values(landfillsResult.insertedIds);
 print("Inserted " + landfillsIds.length + " Landfills.")
 
 // -----------------------LOAD VEHICLES -----------------------
-
 const vehicles = []
 const makes = ["Ford","Skoda","Volvo","Toyota","Honda","Mazda","BMW","Audi","Renault","Citroen","Fiat"]
 const models = ["Hirtia", "Arpagius", "Cania", "Sartorius", "Attia", "Salvian", "Auria", "Aufidia", "Titia", "Aurus", "Citria"]
@@ -4272,11 +4270,8 @@ const workDays = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 const garbcanslist = [garbageCansIds[0],garbageCansIds[1],garbageCansIds[2]]
 
 let vehicleIndex = 0
-const meow = new Array(20)
-
-uniqueCities.forEach(city => {    
+uniqueCities.forEach(  
   garbageCollections.push({
-    //ZDE NEVÍM JAK ŘEŠIT
     "garbageCans": garbageCansIds.slice(vehicleIndex*10, vehicleIndex*10+20),
     "assignedVehicle": vehiclesIds[vehicleIndex++],    
     "dayOfCollection": workDays[Math.floor(Math.random() * workDays.length)],
@@ -4284,7 +4279,7 @@ uniqueCities.forEach(city => {
     "length": Math.random() * (200),
     "timeEstimate": Math.floor(Math.random() * (2000 - 60)) + 60
   })
-})
+)
 
 const garbageCollectionsResult = db.garbageCollection.insertMany(garbageCollections)
 const garbageCollectionsIds = Object.values(garbageCollectionsResult.insertedIds);
