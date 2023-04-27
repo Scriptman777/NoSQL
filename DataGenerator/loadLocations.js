@@ -4270,7 +4270,8 @@ const workDays = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 const garbcanslist = [garbageCansIds[0],garbageCansIds[1],garbageCansIds[2]]
 
 let vehicleIndex = 0
-uniqueCities.forEach(  
+
+for (let i = 0; i < uniqueCities.length; i++) {
   garbageCollections.push({
     "garbageCans": garbageCansIds.slice(vehicleIndex*10, vehicleIndex*10+20),
     "assignedVehicle": vehiclesIds[vehicleIndex++],    
@@ -4279,7 +4280,17 @@ uniqueCities.forEach(
     "length": Math.random() * (200),
     "timeEstimate": Math.floor(Math.random() * (2000 - 60)) + 60
   })
-)
+}
+// uniqueCities.forEach(  
+//   garbageCollections.push({
+//     "garbageCans": garbageCansIds.slice(vehicleIndex*10, vehicleIndex*10+20),
+//     "assignedVehicle": vehiclesIds[vehicleIndex++],    
+//     "dayOfCollection": workDays[Math.floor(Math.random() * workDays.length)],
+//     "dateEnd": new Date(2023,11,5,5,5),
+//     "length": Math.random() * (200),
+//     "timeEstimate": Math.floor(Math.random() * (2000 - 60)) + 60
+//   })
+// )
 
 const garbageCollectionsResult = db.garbageCollection.insertMany(garbageCollections)
 const garbageCollectionsIds = Object.values(garbageCollectionsResult.insertedIds);
