@@ -4239,7 +4239,7 @@ const makes = ["Ford","Skoda","Volvo","Toyota","Honda","Mazda","BMW","Audi","Ren
 const models = ["Hirtia", "Arpagius", "Cania", "Sartorius", "Attia", "Salvian", "Auria", "Aufidia", "Titia", "Aurus", "Citria"]
 
 for (let i = 0; i < landfillsIds.length; i++) {
-  const carsWanted = Math.floor(Math.random() * 10) + 1
+  const carsWanted = Math.floor(Math.random() * 10) + 10
   for (let j = 0; j < carsWanted; j++) {       
     vehicles.push({         
       "licencePlate": generateLicencePlate(),
@@ -4281,16 +4281,6 @@ for (let i = 0; i < uniqueCities.length; i++) {
     "timeEstimate": Math.floor(Math.random() * (2000 - 60)) + 60
   })
 }
-// uniqueCities.forEach(  
-//   garbageCollections.push({
-//     "garbageCans": garbageCansIds.slice(vehicleIndex*10, vehicleIndex*10+20),
-//     "assignedVehicle": vehiclesIds[vehicleIndex++],    
-//     "dayOfCollection": workDays[Math.floor(Math.random() * workDays.length)],
-//     "dateEnd": new Date(2023,11,5,5,5),
-//     "length": Math.random() * (200),
-//     "timeEstimate": Math.floor(Math.random() * (2000 - 60)) + 60
-//   })
-// )
 
 const garbageCollectionsResult = db.garbageCollection.insertMany(garbageCollections)
 const garbageCollectionsIds = Object.values(garbageCollectionsResult.insertedIds);
