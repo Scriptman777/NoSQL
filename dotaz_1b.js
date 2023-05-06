@@ -1,3 +1,5 @@
+db.garbageCan.createIndex({garbageType: 1, volume: 1})
+
 const aggrSumResult = db.garbageCan.aggregate([
     {
       $group: {

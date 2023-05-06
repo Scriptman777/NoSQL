@@ -1,3 +1,5 @@
+db.location.createIndex({_id: 1, "landfill.percentFilled": 1})
+
 const landfills = db.location.aggregate([
     {
       $lookup: {

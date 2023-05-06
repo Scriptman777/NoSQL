@@ -1,5 +1,8 @@
 use('GarbageCollectors');
 print("This script calculates the total sum of garbage cans that have garbageType Dangerous.")
+
+db.garbageCan.createIndex({garbageType: 1, volume: 1})
+
 const aggrSumResult = db.garbageCan.aggregate([
    {
       $match: {

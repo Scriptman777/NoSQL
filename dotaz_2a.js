@@ -1,5 +1,8 @@
 use('GarbageCollectors');
 print("This script finds all landfills with percentFilled lower than 10%.")
+
+db.garbageCan.createIndex({garbageType: 1, volume: 1})
+
 const landfills = db.landfill.aggregate([
   {
     $lookup: {
