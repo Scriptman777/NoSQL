@@ -1,0 +1,20 @@
+PS E:\Users\Dokumenty\FIM\8Semestr\NoSQL\Project> .\backup.ps1
+2023-05-06T08:00:31.659+0000    writing admin.system.version to dump/admin/system.version.bson
+2023-05-06T08:00:31.659+0000    done dumping admin.system.version (1 document)
+2023-05-06T08:00:31.662+0000    writing GarbageCollectors.garbageCan to dump/GarbageCollectors/garbageCan.bson
+2023-05-06T08:00:31.663+0000    writing GarbageCollectors.vehicle to dump/GarbageCollectors/vehicle.bson
+2023-05-06T08:00:31.663+0000    writing GarbageCollectors.location to dump/GarbageCollectors/location.bson
+2023-05-06T08:00:31.663+0000    writing GarbageCollectors.landfill to dump/GarbageCollectors/landfill.bson
+2023-05-06T08:00:31.665+0000    done dumping GarbageCollectors.vehicle (295 documents)
+2023-05-06T08:00:31.665+0000    done dumping GarbageCollectors.landfill (20 documents)
+2023-05-06T08:00:31.666+0000    writing GarbageCollectors.garbageCollection to dump/GarbageCollectors/garbageCollection.bson
+2023-05-06T08:00:31.666+0000    writing config.tenantMigrationRecipients to dump/config/tenantMigrationRecipients.bson
+2023-05-06T08:00:31.667+0000    done dumping config.tenantMigrationRecipients (0 documents)
+2023-05-06T08:00:31.668+0000    done dumping GarbageCollectors.garbageCollection (20 documents)
+2023-05-06T08:00:31.668+0000    done dumping GarbageCollectors.garbageCan (1038 documents)
+2023-05-06T08:00:31.668+0000    writing config.external_validation_keys to dump/config/external_validation_keys.bson
+2023-05-06T08:00:31.668+0000    writing config.tenantMigrationDonors to dump/config/tenantMigrationDonors.bson
+2023-05-06T08:00:31.669+0000    done dumping GarbageCollectors.location (1038 documents)
+2023-05-06T08:00:31.669+0000    done dumping config.tenantMigrationDonors (0 documents)
+2023-05-06T08:00:31.669+0000    done dumping config.external_validation_keys (0 documents)
+Press Enter to exit:

@@ -112,12 +112,32 @@ aktuálních svozech, svozových nádobách a stavu skládek na jehož základì bude
 možné svozy optimalizovat z hlediska trasy nebo typu potøebného vozu (objem,
 konstrukce apod.). </p>
 
+<h1 style='text-indent:7.1pt'><span style='color:black'>Spuštìní </span></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Po vytvoøení kontejnerù pomocí docker compose je tøeba
+spustit startRepl.js pro funkèní replikaci.<br>
+Kolekce a jejich validace se založí pomocí createDB.js, následnì mohou být
+naplnìny pomocí initDB.js<br>
+<b><span style='color:red'>Upozornìní: </span></b>Data vytvoøená pomocí initDB.js
+jsou náhodná a nebudou konzistentní pøi opakovaném generování. Výstupy
+nìkterých skriptù se tedy mohou lišit. </p>
+
+<p class=MsoNormal>Tato dokumentace je dostupná ve formátech docx, pdf a html. </p>
+
 <h1 style='text-indent:7.1pt'><span style='color:black'>E-R Diagram</span></h1>
 
 <p class=MsoNormal>&nbsp;</p>
 
 <p class=MsoNormal><img width=604 height=313 id="Obrázek 1"
 src="Dokumentace_soubory/image001.png"></p>
+
+<span style='font-size:11.0pt;line-height:107%;font-family:"Calibri",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
 
 <h1 style='text-indent:7.1pt'><span style='color:black'>Slovní definice
 validací</span></h1>
@@ -240,9 +260,15 @@ style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nb
 </span></span>timeEstimate je odhad èasu potøebného na svoz v&nbsp;minutách,
 datový typ Int</p>
 
-<h1 style='text-indent:7.1pt'><span style='color:black'>Popis ukázky API</span></h1>
+<span style='font-size:11.0pt;line-height:107%;font-family:"Calibri",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
 
 <p class=MsoNormal>&nbsp;</p>
+
+<h1 style='text-indent:7.1pt'><span style='color:black'>Popis ukázky API</span></h1>
+
+<p class=MsoNormal>APItest.js</p>
 
 <p class=MsoNormal><b>1) Pøidání nové nádoby</b></p>
 
@@ -288,6 +314,137 @@ style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nb
 které se v&nbsp;ní nachází. Následnì jsou pøidány do nového svozu, ke kterému
 je pøiøazeno zvolené vozidlo. Tento je zamýšlen pouze jako zjednodušení pro
 malé obce a vsi a nebyl by využíván pro vìtší mìsta. </p>
+
+<h1 style='text-indent:7.1pt'><span style='color:black'>Zálohovací skript</span></h1>
+
+<p class=MsoNormal>backup.ps1 </p>
+
+<p class=MsoNormal>backup.sh</p>
+
+<p class=MsoNormal>backup_vystup.txt</p>
+
+<p class=MsoNormal><b>Popis:</b></p>
+
+<p class=MsoNormal>PowerShell script slouží k&nbsp;vložení backup.sh do
+primárního kontejneru a jeho spuštìní. Tento Bash script vytvoøí pomocí mongodum
+zálohu v&nbsp;home/dump kontejneru, která je pak vykopírována PowerShell
+scriptem do složky, ze které byl spuštìn.</p>
+
+<h1 style='text-indent:7.1pt'><span style='color:black'>Vyèištìní databáze</span></h1>
+
+<p class=MsoNormal>clearDB.js</p>
+
+<p class=MsoNormal>deleteDB.js</p>
+
+<p class=MsoNormal><b>Popis:</b></p>
+
+<p class=MsoNormal>clearDB.js slouží k&nbsp;promazání dat všech kolekcí, zanechává
+validace a prázdné kolekce. deleteDB.js smaže data i kolekce.</p>
+
+<span style='font-size:11.0pt;line-height:107%;font-family:"Calibri",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h1 style='text-indent:7.1pt'><span style='color:black'>Dotazy nad schématem</span></h1>
+
+<p class=MsoNormal>Dotaz 1 (agregace):</p>
+
+<p class=MsoNormal>                Celkový poèet svozových nádob, které mají typ
+Nebezpeèné.</p>
+
+<p class=MsoNormal>Dotaz 2 (agregace):</p>
+
+<p class=MsoNormal>                Seznam všech skládek které jsou naplnìny
+z&nbsp;více než 10%.</p>
+
+<p class=MsoNormal>Dotaz 3 (agregace):</p>
+
+<p class=MsoNormal>                Seznam všech aut, které mají znaèku Škoda a
+jejich domovská skládka sídlí v&nbsp;Praze.</p>
+
+<p class=MsoNormal>Dotaz 4 (agregace):</p>
+
+<p class=MsoNormal style='text-indent:35.4pt'>Èetnost jednotlivých druhù
+popelnic nacházející se v&nbsp;Praze.</p>
+
+<p class=MsoNormal>Dotaz 5 (agregace):</p>
+
+<p class=MsoNormal style='text-indent:35.4pt'>Nalezení svozu, který má nejvìtší
+souhrnný objem popelnic.</p>
+
+<p class=MsoNormal style='text-indent:35.4pt'>&nbsp;</p>
+
+<h1 style='text-indent:7.1pt'><span style='color:black'>Skripty s navrženými
+dotazy nad schématem</span></h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Dotaz 1 (agregace)</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:34.8pt'>Verze1:</p>
+
+<p class=MsoNormal style='margin-left:70.8pt;text-indent:35.4pt'>dotaz_1a.js</p>
+
+<p class=MsoNormal style='margin-left:70.8pt;text-indent:35.4pt'>dotaz_1a_vystup.txt</p>
+
+<p class=MsoNormal style='margin-left:35.4pt;text-indent:35.4pt'>Verze2: </p>
+
+<p class=MsoNormal style='margin-left:70.8pt;text-indent:35.4pt'>dotaz_1b.js</p>
+
+<p class=MsoNormal style='margin-left:70.8pt;text-indent:35.4pt'>dotaz_1b_vystup.txt</p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Dotaz 2 (agregace)</p>
+
+<p class=MsoNormal style='margin-left:71.4pt'>Verze1:</p>
+
+<p class=MsoNormal style='margin-left:70.8pt;text-indent:35.4pt'>dotaz_2a.js</p>
+
+<p class=MsoNormal style='margin-left:70.8pt;text-indent:35.4pt'>dotaz_2a_vystup.txt</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:34.8pt'>Verze2:</p>
+
+<p class=MsoNormal style='margin-left:70.8pt;text-indent:35.4pt'>dotaz_2b.js</p>
+
+<p class=MsoNormal style='margin-left:70.8pt;text-indent:35.4pt'>dotaz_2b_vystup.txt</p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Dotaz 3 (agregace)</p>
+
+<p class=MsoNormal style='margin-left:35.4pt;text-indent:35.4pt'>dotaz_3.js</p>
+
+<p class=MsoNormal style='margin-left:70.8pt'>dotaz_3_vystup.txt</p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Dotaz 4 (agregace)</p>
+
+<p class=MsoNormal style='margin-left:35.4pt;text-indent:35.4pt'>dotaz_4.js</p>
+
+<p class=MsoNormal style='margin-left:35.4pt;text-indent:35.4pt'>dotaz_4_vystup.txt</p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Dotaz 5 (agregace)</p>
+
+<p class=MsoNormal style='margin-left:35.4pt;text-indent:35.4pt'>dotaz_5.js</p>
+
+<p class=MsoNormal style='margin-left:70.8pt'>dotaz_5_vystup.txt</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Dotaz èíslo 1a byl rychlejší o 1ms než 1b, pøièemž totalDocsExamined
+mìly oba dotazy shodné s&nbsp;hodnotou 1038.</p>
+
+<p class=MsoNormal>Dotaz èíslo 2a byl rychlejší o 5ms než dotaz 2b. Rozdíl
+v&nbsp;totalDocsExamined též není zanedbatelný, u 1a dosahuje hodnoty 20 a
+dotaz 2b hodnoty 1038 dokumentù. </p>
 
 </div>
 

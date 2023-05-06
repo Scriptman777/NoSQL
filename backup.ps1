@@ -1,7 +1,7 @@
-docker cp backup.sh mongodb:/home
+docker cp backup.sh mongo-primary:/home
 
-docker exec mongodb home/backup.sh
+docker exec mongo-primary home/backup.sh
 
-docker cp mongodb:/home/dump/ dump
+docker cp mongo-primary:/home/dump/ dump
 
 Read-Host -Prompt "Press Enter to exit"
