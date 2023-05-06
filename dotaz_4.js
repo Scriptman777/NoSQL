@@ -1,5 +1,6 @@
 use('GarbageCollectors');
 print("This script counts the number of garbage cans by type in Praha.")
+
 const garbageCanGroups = db.garbageCan.aggregate([
     {
         $lookup: {

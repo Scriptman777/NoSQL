@@ -14,12 +14,12 @@ const vehicles = db.vehicle.aggregate([
       from: "location",
       localField: "landfill.location",
       foreignField: "_id",
-      as: "locationInfo"
+      as: "location"
     }
   },
   {
     $match: {
-      "locationInfo.city": "Praha",
+      "location.city": "Praha",
       "make": "Skoda"
     }
   },

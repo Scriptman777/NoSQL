@@ -1,0 +1,286 @@
+//Dotaz:
+use('GarbageCollectors');
+print("This script calculates the total sum of garbage cans that have garbageType Dangerous.")
+const aggrSumResult = db.garbageCan.aggregate([
+   {
+      $match: {
+         garbageType: "Nebezpečný"
+      }
+   },
+   {
+      $group: {
+         _id: null,
+         totalVolume:
+         {
+            $sum: "$volume"
+         }
+      }
+   },
+   {
+      $project: {
+         totalVolume: 1,
+         _id: 0
+      }
+   }
+]).toArray()
+
+
+//Exekuční plán (výstup z explain()):
+{
+    "explainVersion": "2",
+    "stages": [
+        {
+            "$cursor": {
+                "queryPlanner": {
+                    "namespace": "GarbageCollectors.garbageCan",
+                    "indexFilterSet": false,
+                    "parsedQuery": {
+                        "garbageType": {
+                            "$eq": "Nebezpečný"
+                        }
+                    },
+                    "queryHash": "E94D8055",
+                    "planCacheKey": "E94D8055",
+                    "maxIndexedOrSolutionsReached": false,
+                    "maxIndexedAndSolutionsReached": false,
+                    "maxScansToExplodeReached": false,
+                    "winningPlan": {
+                        "queryPlan": {
+                            "stage": "GROUP",
+                            "planNodeId": 2,
+                            "inputStage": {
+                                "stage": "COLLSCAN",
+                                "planNodeId": 1,
+                                "filter": {
+                                    "garbageType": {
+                                        "$eq": "Nebezpečný"
+                                    }
+                                },
+                                "direction": "forward"
+                            }
+                        },
+                        "slotBasedPlan": {
+                            "slots": "$$RESULT=s11 env: { s1 = TimeZoneDatabase(Australia/Brisbane...Indian/Mayotte) (timeZoneDB), s2 = Nothing (SEARCH_META), s3 = 1683217612312 (NOW) }",
+                            "stages": "[2] mkobj s11 [_id = s6, totalVolume = s10] true false \n[2] project [s10 = doubleDoubleSumFinalize (s8)] \n[2] group [s6] [s8 = aggDoubleDoubleSum (s7)] spillSlots[s9] mergingExprs[aggMergeDoubleDoubleSums (s9)] \n[2] project [s7 = getField (s4, \"volume\")] \n[2] project [s6 = fillEmpty (null, null)] \n[1] filter {applyClassicMatcher (ClassicMatcher({ garbageType: { $eq: \"Nebezpečný\" } }), s4)} \n[1] scan s4 s5 none none none none [] @\"463238c2-caae-4f22-aebc-e8f3b256f017\" true false "
+                        }
+                    },
+                    "rejectedPlans": []
+                },
+                "executionStats": {
+                    "executionSuccess": true,
+                    "nReturned": 1,
+                    "executionTimeMillis": 0,
+                    "totalKeysExamined": 0,
+                    "totalDocsExamined": 1038,
+                    "executionStages": {
+                        "stage": "mkobj",
+                        "planNodeId": 2,
+                        "nReturned": 1,
+                        "executionTimeMillisEstimate": 1,
+                        "opens": 1,
+                        "closes": 1,
+                        "saveState": 2,
+                        "restoreState": 2,
+                        "isEOF": 1,
+                        "objSlot": 11,
+                        "fields": [],
+                        "projectFields": [
+                            "_id",
+                            "totalVolume"
+                        ],
+                        "projectSlots": [
+                            {
+                                "low": 6,
+                                "high": 0,
+                                "unsigned": false
+                            },
+                            {
+                                "low": 10,
+                                "high": 0,
+                                "unsigned": false
+                            }
+                        ],
+                        "forceNewObject": true,
+                        "returnOldObject": false,
+                        "inputStage": {
+                            "stage": "project",
+                            "planNodeId": 2,
+                            "nReturned": 1,
+                            "executionTimeMillisEstimate": 1,
+                            "opens": 1,
+                            "closes": 1,
+                            "saveState": 2,
+                            "restoreState": 2,
+                            "isEOF": 1,
+                            "projections": {
+                                "10": "doubleDoubleSumFinalize (s8) "
+                            },
+                            "inputStage": {
+                                "stage": "group",
+                                "planNodeId": 2,
+                                "nReturned": 1,
+                                "executionTimeMillisEstimate": 1,
+                                "opens": 1,
+                                "closes": 1,
+                                "saveState": 2,
+                                "restoreState": 2,
+                                "isEOF": 1,
+                                "groupBySlots": [
+                                    {
+                                        "low": 6,
+                                        "high": 0,
+                                        "unsigned": false
+                                    }
+                                ],
+                                "expressions": {
+                                    "8": "aggDoubleDoubleSum (s7) "
+                                },
+                                "mergingExprs": {
+                                    "9": "aggMergeDoubleDoubleSums (s9) "
+                                },
+                                "usedDisk": false,
+                                "numSpills": 0,
+                                "spilledRecords": 0,
+                                "spilledDataStorageSize": 0,
+                                "inputStage": {
+                                    "stage": "project",
+                                    "planNodeId": 2,
+                                    "nReturned": 138,
+                                    "executionTimeMillisEstimate": 1,
+                                    "opens": 1,
+                                    "closes": 1,
+                                    "saveState": 2,
+                                    "restoreState": 2,
+                                    "isEOF": 1,
+                                    "projections": {
+                                        "7": "getField (s4, \"volume\") "
+                                    },
+                                    "inputStage": {
+                                        "stage": "project",
+                                        "planNodeId": 2,
+                                        "nReturned": 138,
+                                        "executionTimeMillisEstimate": 1,
+                                        "opens": 1,
+                                        "closes": 1,
+                                        "saveState": 2,
+                                        "restoreState": 2,
+                                        "isEOF": 1,
+                                        "projections": {
+                                            "6": "fillEmpty (null, null) "
+                                        },
+                                        "inputStage": {
+                                            "stage": "filter",
+                                            "planNodeId": 1,
+                                            "nReturned": 138,
+                                            "executionTimeMillisEstimate": 1,
+                                            "opens": 1,
+                                            "closes": 1,
+                                            "saveState": 2,
+                                            "restoreState": 2,
+                                            "isEOF": 1,
+                                            "numTested": 1038,
+                                            "filter": "applyClassicMatcher (ClassicMatcher({ garbageType: { $eq: \"Nebezpečný\" } }), s4) ",
+                                            "inputStage": {
+                                                "stage": "scan",
+                                                "planNodeId": 1,
+                                                "nReturned": 1038,
+                                                "executionTimeMillisEstimate": 1,
+                                                "opens": 1,
+                                                "closes": 1,
+                                                "saveState": 2,
+                                                "restoreState": 2,
+                                                "isEOF": 1,
+                                                "numReads": 1038,
+                                                "recordSlot": 4,
+                                                "recordIdSlot": 5,
+                                                "fields": [],
+                                                "outputSlots": []
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "allPlansExecution": []
+                }
+            },
+            "nReturned": {
+                "low": 1,
+                "high": 0,
+                "unsigned": false
+            },
+            "executionTimeMillisEstimate": {
+                "low": 1,
+                "high": 0,
+                "unsigned": false
+            }
+        },
+        {
+            "$project": {
+                "totalVolume": true,
+                "_id": false
+            },
+            "nReturned": {
+                "low": 1,
+                "high": 0,
+                "unsigned": false
+            },
+            "executionTimeMillisEstimate": {
+                "low": 1,
+                "high": 0,
+                "unsigned": false
+            }
+        }
+    ],
+    "serverInfo": {
+        "host": "ad65699b3214",
+        "port": 27017,
+        "version": "6.0.5",
+        "gitVersion": "c9a99c120371d4d4c52cbb15dac34a36ce8d3b1d"
+    },
+    "serverParameters": {
+        "internalQueryFacetBufferSizeBytes": 104857600,
+        "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+        "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+        "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+        "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+        "internalQueryProhibitBlockingMergeOnMongoS": 0,
+        "internalQueryMaxAddToSetBytes": 104857600,
+        "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600
+    },
+    "command": {
+        "aggregate": "garbageCan",
+        "pipeline": [
+            {
+                "$match": {
+                    "garbageType": "Nebezpečný"
+                }
+            },
+            {
+                "$group": {
+                    "_id": null,
+                    "totalVolume": {
+                        "$sum": "$volume"
+                    }
+                }
+            },
+            {
+                "$project": {
+                    "totalVolume": 1,
+                    "_id": 0
+                }
+            }
+        ],
+        "cursor": {},
+        "$db": "GarbageCollectors"
+    },
+    "ok": 1
+}
+
+//Výstup skriptu:
+[ { totalVolume: 67915 } ]
+
+//Upravený výstup:
+This script calculates the total sum of garbage cans that have garbageType Dangerous.
+The sum of the volumes for Nebezpečný garbage can type is: 67915

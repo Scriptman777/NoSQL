@@ -1,7 +1,4 @@
-
-
 use('GarbageCollectors');
-
 
 db.createCollection("location", {
    validator: {
